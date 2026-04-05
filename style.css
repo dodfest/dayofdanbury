@@ -459,3 +459,103 @@ a.nonprofit-name:hover {
   color: #809AFF;
   line-height: 1.8;
 }
+
+/* ---------------- Mobile ---------------- */
+@media (max-width: 768px) {
+
+  /* Title centered and scaled down */
+  .title {
+    font-size: 2.8rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Header layout */
+  .header {
+    padding: 20px 20px;
+    justify-content: center;
+  }
+
+  /* Hamburger stays top right */
+  .hamburger {
+    right: 20px;
+  }
+
+  /* Menu takes full width on mobile */
+  .menu {
+    width: 100%;
+    padding-top: 100px;
+    padding-left: 40px;
+  }
+
+  /* Smaller menu font on mobile */
+  .menu a {
+    font-size: 3rem;
+  }
+
+  .menu li {
+    margin: 20px 0;
+  }
+
+  /* Logo and animation scaled down */
+  .logo-wrapper {
+    width: 180px;
+    height: 180px;
+  }
+
+  .animation-area {
+    margin-top: 60px;
+    gap: 40px;
+  }
+
+  /* Clones spread less on mobile */
+  .logo-wrapper.active .clone1 {
+    transform: translate(calc(-50% - 160px), -50%) scale(1);
+  }
+  .logo-wrapper.active .clone3 {
+    transform: translate(calc(-50% + 160px), -50%) scale(1);
+  }
+  .logo-wrapper.active .clone1:hover {
+    transform: translate(calc(-50% - 160px), -50%) scale(1.12);
+  }
+  .logo-wrapper.active .clone3:hover {
+    transform: translate(calc(-50% + 160px), -50%) scale(1.12);
+  }
+
+  /* Event buttons stacked and smaller */
+  .event-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  .event-btn {
+    width: 180px;
+    height: 180px;
+  }
+
+  /* Countdown scaled */
+  .countdown {
+    padding: 20px 0 20px 30px;
+  }
+  .time span:first-child {
+    font-size: 1.8rem;
+    min-width: 60px;
+  }
+
+  /* Subpage title */
+  .subpage-title {
+    font-size: 2.5rem;
+  }
+
+  .coming-soon {
+    font-size: 1.4rem;
+  }
+
+  .about-content {
+    padding: 20px 20px;
+  }
+
+  .nonprofit-box {
+    padding: 20px;
+  }
+}
