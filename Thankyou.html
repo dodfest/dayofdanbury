@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You - Day of Danbury</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .title {
+      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
+      font-weight: 700;
+    }
+
+    .thankyou-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .thankyou-heading {
+      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #486FFF;
+    }
+
+    .thankyou-body {
+      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
+      font-size: 1.1rem;
+      color: #486FFF;
+      max-width: 520px;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="index.html" class="title">Day of Danbury</a>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- Slide-in Menu -->
+  <nav class="menu" id="menu">
+    <ul>
+      <li><a href="About.html">About</a></li>
+      <li><a href="Vendors.html">Vendors</a></li>
+      <li><a href="Sponsors.html">Sponsors</a></li>
+      <li><a href="Donate.html">Donate</a></li>
+      <li><a href="Contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="thankyou-wrap">
+      <h2 class="thankyou-heading">Thank You.</h2>
+      <p class="thankyou-body">We received your submission and will be in touch soon. We appreciate your interest in partnering with Day of Danbury.</p>
+    </div>
+  </div>
+
+  <!-- Countdown -->
+  <div class="countdown">
+    <div class="time"><span id="days">0</span><span class="label">Days</span></div>
+    <div class="time"><span id="hours">0</span><span class="label">Hours</span></div>
+    <div class="time"><span id="minutes">0</span><span class="label">Minutes</span></div>
+    <div class="time"><span id="seconds">0</span><span class="label">Seconds</span></div>
+  </div>
+
+  <!-- Static Home Button -->
+  <img src="images/Blue Button.png" id="homeBtnStatic" onclick="window.location.href='index.html'">
+
+  <script>
+    const targetDate = new Date("June 27, 2026 12:00:00 GMT-0400").getTime();
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      if (distance < 0) return;
+      document.getElementById("days").innerText    = Math.floor(distance / (1000*60*60*24));
+      document.getElementById("hours").innerText   = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+      document.getElementById("minutes").innerText = Math.floor((distance % (1000*60*60)) / (1000*60));
+      document.getElementById("seconds").innerText = Math.floor((distance % (1000*60)) / 1000);
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    document.getElementById("hamburger").addEventListener("click", () => {
+      document.getElementById("hamburger").classList.toggle("active");
+      document.getElementById("menu").classList.toggle("active");
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,461 @@
+/* ---------------- Base ---------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ---------------- Header ---------------- */
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 50px;
+  position: relative;
+  z-index: 50;
+}
+.title {
+  font-size: 6rem;
+  font-weight: bold;
+  color: #486FFF;
+  text-decoration: none;
+  cursor: default;
+}
+
+/* ---------------- Hamburger ---------------- */
+.hamburger {
+  width: 35px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 60;
+}
+.hamburger span {
+  display: block;
+  height: 4px;
+  background: #486FFF;
+  border-radius: 2px;
+  transition: all 0.4s ease, background 0.4s ease;
+  transform-origin: center;
+}
+
+/* X animation — 2 spans only */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+  background: #fff;
+}
+.hamburger.active span:nth-child(2) {
+  transform: translateY(-10px) rotate(-45deg);
+  background: #fff;
+}
+
+/* ---------------- Menu Panel ---------------- */
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background-color: #486FFF;
+  box-shadow: -4px 0 10px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 100px;
+  padding-left: 30px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 10;
+}
+.menu.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.menu li {
+  margin: 30px 0;
+}
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 5rem;
+  font-weight: bold;
+  transition: opacity 0.3s ease;
+}
+.menu a:hover {
+  opacity: 0.7;
+}
+
+
+/* ---------------- Logo Wrapper / Horizontal Split ---------------- */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  position: relative;
+  width: 100%;
+}
+.logo-wrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  cursor: pointer;
+}
+
+/* All logos share this base — positioned from center */
+#mainLogo,
+.clone {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  pointer-events: none;
+}
+#mainLogo {
+  z-index: 2;
+  pointer-events: auto;
+}
+.clone {
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Hover pulse on main logo — only before split */
+.logo-wrapper:not(.active) #mainLogo:hover {
+  transform: translate(-50%, -50%) scale(1.3);
+  transition: transform 0.3s ease;
+}
+
+/* --- Active state --- */
+
+/* Main logo hidden during split — JS flyer handles the shrink animation */
+.logo-wrapper.active #mainLogo {
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* clone2 (TNAD Blue) center — raised above mainLogo */
+.logo-wrapper.active .clone2 {
+  opacity: 1;
+  z-index: 3;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
+/* clone1 (Center 4 Blue) moves LEFT */
+.logo-wrapper.active .clone1 {
+  opacity: 1;
+  z-index: 3;
+  transform: translate(calc(-50% - 340px), -50%) scale(1);
+  pointer-events: auto;
+}
+
+/* clone3 (Blue Button copy) moves RIGHT */
+.logo-wrapper.active .clone3 {
+  opacity: 1;
+  z-index: 3;
+  transform: translate(calc(-50% + 340px), -50%) scale(1);
+  pointer-events: auto;
+}
+
+/* ---------------- Clone hover pulses — after split ---------------- */
+.logo-wrapper.active .clone1:hover {
+  transform: translate(calc(-50% - 340px), -50%) scale(1.12);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.logo-wrapper.active .clone2:hover {
+  transform: translate(-50%, -50%) scale(1.12);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.logo-wrapper.active .clone3:hover {
+  transform: translate(calc(-50% + 340px), -50%) scale(1.12);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* ---------------- Countdown ---------------- */
+.countdown {
+  width: 100%;
+  padding: 40px 0 40px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.time {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.time span:first-child {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #486FFF;
+  min-width: 80px;
+  text-align: right;
+}
+.label {
+  font-size: 1rem;
+  color: #999;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+
+/* ---------------- Animation Area ---------------- */
+.animation-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  position: relative;
+  margin-top: 140px;
+}
+
+/* ---------------- Event Buttons ---------------- */
+.event-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 120px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  pointer-events: none;
+}
+.event-buttons.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.event-btn {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.event-btn:hover {
+  transform: scale(1.1);
+}
+
+
+
+/* ---------------- Subpage Content ---------------- */
+.subpage-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+}
+.subpage-title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #486FFF;
+}
+.coming-soon {
+  font-size: 2rem;
+  color: #486FFF;
+  opacity: 0.6;
+  letter-spacing: 3px;
+}
+
+/* ---------------- About Text ---------------- */
+.about-text {
+  font-size: 1.4rem;
+  color: #486FFF;
+  max-width: 700px;
+  text-align: center;
+  line-height: 1.8;
+}
+
+/* ---------------- About Page ---------------- */
+.about-content {
+  max-width: 750px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 40px 0;
+  text-align: left;
+}
+.about-subheading {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #486FFF;
+  margin-top: 20px;
+}
+.about-body {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.8;
+}
+
+/* ---------------- Home Button (shrunken main logo) ---------------- */
+#homeBtn {
+  display: none;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+#homeBtn.visible {
+  display: block;
+  opacity: 1;
+}
+#homeBtn:hover {
+  transform: translateX(-50%) scale(1.15);
+}
+
+/* ---------------- Static Home Button (other pages) ---------------- */
+#homeBtnStatic {
+  display: block;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  transition: transform 0.3s ease;
+}
+#homeBtnStatic:hover {
+  transform: translateX(-50%) scale(1.15);
+}
+
+/* ---------------- Festival Page ---------------- */
+.fest-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+  max-width: 700px;
+  padding: 40px 20px;
+}
+.fest-dates {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #486FFF;
+  letter-spacing: 2px;
+}
+.fest-body {
+  font-size: 1.1rem;
+  color: #486FFF;
+  line-height: 1.8;
+}
+
+/* ---------------- Festival Page ---------------- */
+.fest-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+  max-width: 700px;
+  padding: 40px 20px;
+}
+.fest-dates {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #486FFF;
+  letter-spacing: 2px;
+}
+.fest-body {
+  font-size: 1.1rem;
+  color: #466FFF;
+  line-height: 1.8;
+}
+
+/* ---------------- Benefit Page ---------------- */
+.benefit-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 30px;
+  max-width: 700px;
+  width: 90%;
+  padding: 40px 20px 100px 20px;
+}
+.benefit-tagline {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #486FFF;
+  letter-spacing: 3px;
+}
+.nonprofit-box {
+  width: 100%;
+  border: 2.5px solid #486FFF;
+  border-radius: 12px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+.nonprofit-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #486FFF;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+a.nonprofit-name:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+.nonprofit-name.no-link {
+  cursor: default;
+}
+.nonprofit-mission {
+  font-size: 1rem;
+  font-style: italic;
+  color: #486FFF;
+  opacity: 0.8;
+}
+.nonprofit-desc {
+  font-size: 0.95rem;
+  color: #809AFF;
+  line-height: 1.8;
+}

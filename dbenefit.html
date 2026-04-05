@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Danbury Benefit</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+    .benefit-title-main {
+      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
+      font-weight: 700;
+    }
+
+    .benefit-intro {
+      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #486FFF;
+      line-height: 1.8;
+      text-align: center;
+      max-width: 700px;
+    }
+
+    .nonprofit-desc {
+      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
+      font-weight: 400;
+      font-size: 0.95rem;
+      color: #486FFF;
+      line-height: 1.8;
+    }
+
+    .nonprofit-name {
+      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
+      color: #486FFF;
+    }
+
+    .nonprofit-mission {
+      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
+      color: #486FFF;
+    }
+
+    .benefit-tagline {
+      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
+      color: #486FFF;
+    }
+
+    .subpage-title {
+      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="index.html" class="title benefit-title-main">Day of Danbury</a>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- Slide-in Menu -->
+  <nav class="menu" id="menu">
+    <ul>
+      <li><a href="Vendors.html">Vendors</a></li>
+      <li><a href="Sponsors.html">Sponsors</a></li>
+      <li><a href="Media.html">Media</a></li>
+      <li><a href="Donate.html">Donate</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="Contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="benefit-content">
+
+      <h2 class="subpage-title">The Danbury Benefit</h2>
+      <p class="benefit-tagline">THREE MISSIONS. ONE PURPOSE.</p>
+
+      <!-- Intro Description -->
+      <p class="benefit-intro">The Danbury Benefit is a ticketed charity event held the evening of June 27th at the Palace Theater. It features live performances and the exclusive premiere of a documentary celebrating Danbury's cultural story. All net proceeds are distributed among three local nonprofits working to strengthen the community.</p>
+
+      <!-- TNAD Foundation -->
+      <div class="nonprofit-box">
+        <a href="https://www.thenewamericandreamfoundation.org/" target="_blank" class="nonprofit-name">The New American Dream Foundation</a>
+        <p class="nonprofit-mission">Empowering immigrant and first-generation communities through advocacy, resources, and opportunity.</p>
+        <p class="nonprofit-desc">The funds raised will directly support the Senior Hot Meal Program, which delivers monthly meals and friendly visits to more than 650 seniors living in Danbury's tax-credit housing communities. Each meal helps ensure that older adults not only receive nourishment, but also the companionship and human connection that many seniors living alone deeply need.</p>
+      </div>
+
+      <!-- The Center -->
+      <div class="nonprofit-box">
+        <a href="https://www.thecenterct.org/who-we-are/" target="_blank" class="nonprofit-name">The Center for Empowerment &amp; Ed.</a>
+        <p class="nonprofit-mission">Breaking the cycle of interpersonal violence through empowerment, education, and support.</p>
+        <p class="nonprofit-desc">Headquartered in Danbury, CEE is the only state-certified provider of DV and sexual assault services across 11 towns in Northern Fairfield and Southern Litchfield Counties. They serve over 30,000 individuals annually with 24/7 crisis intervention, shelter, and counseling — all at no cost.</p>
+      </div>
+
+      <!-- Living Traditions Foundation -->
+      <div class="nonprofit-box">
+        <span class="nonprofit-name no-link">Living Traditions Foundation Inc.</span>
+        <p class="nonprofit-mission">Preserving cultural heritage through arts, storytelling, and community programming.</p>
+        <p class="nonprofit-desc">LTF empowers first-time entrepreneurs in hospitality and the arts while celebrating Danbury's cultural richness. As the event host and organizer, LTF produces all aspects of Day of Danbury including programming, vendor selection, creative direction, and financial administration.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Countdown -->
+  <div class="countdown">
+    <div class="time"><span id="days">0</span><span class="label">Days</span></div>
+    <div class="time"><span id="hours">0</span><span class="label">Hours</span></div>
+    <div class="time"><span id="minutes">0</span><span class="label">Minutes</span></div>
+    <div class="time"><span id="seconds">0</span><span class="label">Seconds</span></div>
+  </div>
+
+  <!-- Static Home Button -->
+  <img src="images/Blue Button.png" id="homeBtnStatic" onclick="window.location.href='index.html'">
+
+  <script>
+    const targetDate = new Date("June 27, 2026 12:00:00 GMT-0400").getTime();
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      if (distance < 0) return;
+      document.getElementById("days").innerText    = Math.floor(distance / (1000*60*60*24));
+      document.getElementById("hours").innerText   = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+      document.getElementById("minutes").innerText = Math.floor((distance % (1000*60*60)) / (1000*60));
+      document.getElementById("seconds").innerText = Math.floor((distance % (1000*60)) / 1000);
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    document.getElementById("hamburger").addEventListener("click", () => {
+      document.getElementById("hamburger").classList.toggle("active");
+      document.getElementById("menu").classList.toggle("active");
+    });
+  </script>
+
+</body>
+</html>
