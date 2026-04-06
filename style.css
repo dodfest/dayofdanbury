@@ -163,15 +163,7 @@ body, html {
   pointer-events: none;
 }
 
-/* clone2 (TNAD Blue) center — raised above mainLogo */
-.logo-wrapper.active .clone2 {
-  opacity: 1;
-  z-index: 3;
-  transform: translate(-50%, -50%) scale(1);
-  pointer-events: auto;
-}
-
-/* clone1 (Center 4 Blue) moves LEFT */
+/* clone1 (festival) moves LEFT */
 .logo-wrapper.active .clone1 {
   opacity: 1;
   z-index: 3;
@@ -179,8 +171,8 @@ body, html {
   pointer-events: auto;
 }
 
-/* clone3 (Blue Button copy) moves RIGHT */
-.logo-wrapper.active .clone3 {
+/* clone2 (benefit) moves RIGHT */
+.logo-wrapper.active .clone2 {
   opacity: 1;
   z-index: 3;
   transform: translate(calc(-50% + 340px), -50%) scale(1);
@@ -194,11 +186,6 @@ body, html {
   cursor: pointer;
 }
 .logo-wrapper.active .clone2:hover {
-  transform: translate(-50%, -50%) scale(1.12);
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-.logo-wrapper.active .clone3:hover {
   transform: translate(calc(-50% + 340px), -50%) scale(1.12);
   transition: transform 0.3s ease;
   cursor: pointer;
@@ -512,13 +499,13 @@ a.nonprofit-name:hover {
   .logo-wrapper.active .clone1 {
     transform: translate(calc(-50% - 160px), -50%) scale(1);
   }
-  .logo-wrapper.active .clone3 {
+  .logo-wrapper.active .clone2 {
     transform: translate(calc(-50% + 160px), -50%) scale(1);
   }
   .logo-wrapper.active .clone1:hover {
     transform: translate(calc(-50% - 160px), -50%) scale(1.12);
   }
-  .logo-wrapper.active .clone3:hover {
+  .logo-wrapper.active .clone2:hover {
     transform: translate(calc(-50% + 160px), -50%) scale(1.12);
   }
 

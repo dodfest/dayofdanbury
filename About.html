@@ -5,69 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About - Day of Danbury</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+    .title { font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif; font-weight: 700; }
+    .hamburger-wrap { position: absolute; right: 50px; top: 50%; transform: translateY(-50%); display: flex; align-items: center; gap: 10px; cursor: pointer; z-index: 60; }
+    .hamburger-wrap.active { position: fixed; top: 40px; right: 50px; transform: none; }
+    .menu-label, .close-label { font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; user-select: none; transition: opacity 0.3s ease; }
+    .menu-label { color: #486FFF; opacity: 1; }
+    .close-label { color: #fff; opacity: 0; position: absolute; right: 45px; pointer-events: none; }
+    .hamburger-wrap.active .menu-label { opacity: 0; pointer-events: none; }
+    .hamburger-wrap.active .close-label { opacity: 1; pointer-events: auto; }
+    .hamburger { position: static; transform: none; right: auto; top: auto; flex-shrink: 0; }
+    .hamburger.active span:nth-child(1) { transform: translateY(10px) rotate(45deg); background: #fff; }
+    .hamburger.active span:nth-child(2) { transform: translateY(-10px) rotate(-45deg); background: #fff; }
 
-    .about-content * {
-      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
-      color: #486FFF;
+    .about-content {
+      max-width: 750px;
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 40px 0;
+      text-align: center;
     }
-
-    .about-body {
-      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
-      color: #486FFF;
-    }
-
-    .about-subheading {
-      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
-      color: #486FFF;
-    }
-
-    .nonprofit-desc {
-      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
-      font-weight: 400;
-      font-size: 0.95rem;
-      color: #486FFF;
-      line-height: 1.8;
-    }
-
-    .nonprofit-mission {
-      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
-      color: #486FFF;
-    }
-
-    .nonprofit-name {
-      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
-      color: #486FFF;
-    }
-
-    .title {
-      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
-      font-weight: 700;
-    }
-
-    .hamburger.active {
-      position: fixed;
-      right: 50px;
-      top: 40px;
-      transform: none;
-    }
+    .about-content * { font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif; color: #486FFF; }
+    .about-body { font-size: 1.1rem; line-height: 1.8; }
+    .about-subheading { font-size: 2rem; font-weight: bold; margin-top: 20px; }
+    .nonprofit-box { text-align: left; width: 100%; }
+    .nonprofit-desc { font-weight: 400; font-size: 0.95rem; line-height: 1.8; }
+    .nonprofit-mission { font-style: italic; opacity: 0.8; }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header class="header">
     <a href="index.html" class="title">Day of Danbury</a>
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
+    <div class="hamburger-wrap" id="hamburgerWrap">
+      <span class="menu-label">Menu</span>
+      <span class="close-label">Close</span>
+      <div class="hamburger" id="hamburger"><span></span><span></span></div>
     </div>
   </header>
 
-  <!-- Slide-in Menu -->
   <nav class="menu" id="menu">
-    <ul> 
+    <ul>
       <li><a href="About.html">About</a></li>
       <li><a href="Vendors.html">Vendors</a></li>
       <li><a href="Sponsors.html">Sponsors</a></li>
@@ -76,7 +58,6 @@
     </ul>
   </nav>
 
-  <!-- Main Content -->
   <div class="container">
     <div class="about-content">
 
@@ -88,9 +69,8 @@
       <p class="about-body">The Day of Danbury Festival is a free, two-day outdoor event held on the Danbury Green on June 27th and 28th. It brings together live music, cultural performances, local vendors, and community programming open to everyone. The festival is designed to reflect the full range of people and cultures that call Danbury home.</p>
 
       <h3 class="about-subheading">The Danbury Benefit</h3>
-      <p class="about-body">The Danbury Benefit is a ticketed charity event held the evening of June 27th at the Palace Theater. It features live performances and the exclusive premiere of a documentary celebrating Danbury's cultural story. All net proceeds are distributed among three local nonprofits working to strengthen the community.</p>
+      <p class="about-body">The Danbury Benefit is a ticketed charity event featuring live performances and the exclusive premiere of a documentary celebrating Danbury's cultural story. All net proceeds are distributed among three local nonprofits working to strengthen the community.</p>
 
-      <!-- Nonprofit Boxes -->
       <div class="nonprofit-box">
         <a href="https://www.thenewamericandreamfoundation.org/" target="_blank" class="nonprofit-name">The New American Dream Foundation</a>
         <p class="nonprofit-mission">Empowering immigrant and first-generation communities through advocacy, resources, and opportunity.</p>
@@ -112,13 +92,14 @@
     </div>
   </div>
 
-  <!-- Countdown -->
   <div class="countdown">
     <span class="time"><span id="days">0</span><span class="label">DAYS</span></span>
     <span class="time"><span id="hours">0</span><span class="label">HOURS</span></span>
     <span class="time"><span id="minutes">0</span><span class="label">MINUTES</span></span>
     <span class="time"><span id="seconds">0</span><span class="label">SECONDS</span></span>
   </div>
+
+  <img src="images/Blue Button.png" id="homeBtnStatic" onclick="window.location.href='index.html'">
 
   <script>
     const targetDate = new Date("June 27, 2026 12:00:00 GMT-0400").getTime();
@@ -133,15 +114,11 @@
     }
     setInterval(updateCountdown, 1000);
     updateCountdown();
-
-    document.getElementById("hamburger").addEventListener("click", () => {
+    document.getElementById("hamburgerWrap").addEventListener("click", function() {
+      this.classList.toggle("active");
       document.getElementById("hamburger").classList.toggle("active");
       document.getElementById("menu").classList.toggle("active");
     });
   </script>
-
-  <!-- Static Home Button -->
-  <img src="images/Blue Button.png" id="homeBtnStatic" onclick="window.location.href='index.html'">
-
 </body>
 </html>

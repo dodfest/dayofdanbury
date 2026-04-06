@@ -5,60 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Day of Danbury Festival</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
-
-    .title {
-      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
-      font-weight: 700;
-    }
-
-    .fest-content * {
-      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
-    }
-
-    .fest-address {
-      font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif;
-      font-size: 1.1rem;
-      color: #486FFF;
-      line-height: 1.6;
-    }
+    .title { font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif; font-weight: 700; }
+    .fest-content * { font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif; }
+    .fest-address { font-weight: 700; color: #486FFF; font-size: 1.1rem; line-height: 1.6; }
+    .hamburger-wrap { position: absolute; right: 50px; top: 50%; transform: translateY(-50%); display: flex; align-items: center; gap: 10px; cursor: pointer; z-index: 60; }
+    .hamburger-wrap.active { position: fixed; top: 40px; right: 50px; transform: none; }
+    .menu-label, .close-label { font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; user-select: none; transition: opacity 0.3s ease; }
+    .menu-label { color: #486FFF; opacity: 1; }
+    .close-label { color: #fff; opacity: 0; position: absolute; right: 45px; pointer-events: none; }
+    .hamburger-wrap.active .menu-label { opacity: 0; pointer-events: none; }
+    .hamburger-wrap.active .close-label { opacity: 1; pointer-events: auto; }
+    .hamburger { position: static; transform: none; right: auto; top: auto; flex-shrink: 0; }
+    .hamburger.active span:nth-child(1) { transform: translateY(10px) rotate(45deg); background: #fff; }
+    .hamburger.active span:nth-child(2) { transform: translateY(-10px) rotate(-45deg); background: #fff; }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header class="header">
     <a href="index.html" class="title">Day of Danbury</a>
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
+    <div class="hamburger-wrap" id="hamburgerWrap">
+      <span class="menu-label">Menu</span>
+      <span class="close-label">Close</span>
+      <div class="hamburger" id="hamburger"><span></span><span></span></div>
     </div>
   </header>
 
-  <!-- Slide-in Menu -->
   <nav class="menu" id="menu">
     <ul>
-       <li><a href="About.html">About</a></li>
-       <li><a href="Vendors.html">Vendors</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="Vendors.html">Vendors</a></li>
       <li><a href="Sponsors.html">Sponsors</a></li>
       <li><a href="Donate.html">Donate</a></li>
-     
       <li><a href="Contact.html">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Main Content -->
   <div class="container">
     <div class="fest-content">
-      <h2 class="subpage-title">The Day of Danbury Festival</h2>
+      <h2 class="subpage-title">Festival</h2>
       <p class="fest-dates">June 27th – 28th</p>
       <p class="fest-address">1 Ives Street<br>Danbury, CT</p>
       <p class="fest-body">The Day of Danbury Festival is a free, two-day outdoor event held on the Danbury Green on June 27th and 28th. It brings together live music, cultural performances, local vendors, and community programming open to everyone. The festival is designed to reflect the full range of people and cultures that call Danbury home.</p>
     </div>
   </div>
 
-  <!-- Countdown -->
   <div class="countdown">
     <div class="time"><span id="days">0</span><span class="label">Days</span></div>
     <div class="time"><span id="hours">0</span><span class="label">Hours</span></div>
@@ -66,7 +59,6 @@
     <div class="time"><span id="seconds">0</span><span class="label">Seconds</span></div>
   </div>
 
-  <!-- Static Home Button -->
   <img src="images/Blue Button.png" id="homeBtnStatic" onclick="window.location.href='index.html'">
 
   <script>
@@ -82,12 +74,11 @@
     }
     setInterval(updateCountdown, 1000);
     updateCountdown();
-
-    document.getElementById("hamburger").addEventListener("click", () => {
+    document.getElementById("hamburgerWrap").addEventListener("click", function() {
+      this.classList.toggle("active");
       document.getElementById("hamburger").classList.toggle("active");
       document.getElementById("menu").classList.toggle("active");
     });
   </script>
-
 </body>
 </html>
