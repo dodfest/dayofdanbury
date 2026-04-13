@@ -18,6 +18,11 @@
     .hamburger { position: static; transform: none; right: auto; top: auto; flex-shrink: 0; }
     .hamburger.active span:nth-child(1) { transform: translateY(10px) rotate(45deg); background: #fff; }
     .hamburger.active span:nth-child(2) { transform: translateY(-10px) rotate(-45deg); background: #fff; }
+    @media (max-width: 768px) {
+      .header { display: flex; align-items: center; justify-content: center; position: relative; padding: 0 80px 0 20px; }
+      .hamburger-wrap { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); }
+      .hamburger-wrap.active { position: fixed; top: 40px; right: 20px; transform: none; }
+    }
     .benefit-intro { font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif; font-weight: 700; font-size: 1.05rem; color: #486FFF; line-height: 1.8; text-align: center; max-width: 700px; }
     .benefit-date { font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif; font-size: 1.3rem; color: #486FFF; letter-spacing: 1px; }
     .nonprofit-desc { font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif; font-weight: 400; font-size: 0.95rem; color: #486FFF; line-height: 1.8; }

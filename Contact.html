@@ -20,6 +20,11 @@
     .hamburger { position: static; transform: none; right: auto; top: auto; flex-shrink: 0; }
     .hamburger.active span:nth-child(1) { transform: translateY(10px) rotate(45deg); background: #fff; }
     .hamburger.active span:nth-child(2) { transform: translateY(-10px) rotate(-45deg); background: #fff; }
+    @media (max-width: 768px) {
+      .header { display: flex; align-items: center; justify-content: center; position: relative; padding: 0 80px 0 20px; }
+      .hamburger-wrap { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); }
+      .hamburger-wrap.active { position: fixed; top: 40px; right: 20px; transform: none; }
+    }
   </style>
   <style>
     .contact-row { display: flex; align-items: center; gap: 10px; font-family: 'Futura', 'Josefin Sans', 'Century Gothic', Arial, sans-serif; font-size: 1.1rem; color: #486FFF; }
@@ -54,7 +59,7 @@
       <h2 class="subpage-title">Contact</h2>
       <div class="contact-row">
         <span class="contact-label">Email:</span>
-        <a href="mailto:dayofdanbury@gmail.com" class="contact-link">dayofdanbury@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#2743465e48414346494552555e67404a464e4b0944484a" class="contact-link"><span class="__cf_email__" data-cfemail="9efaffe7f1f8fafff0fcebece7def9f3fff7f2b0fdf1f3">[email&#160;protected]</span></a>
       </div>
       <div class="contact-row">
         <span class="contact-label">Instagram:</span>
@@ -72,7 +77,7 @@
 
   <img src="images/Blue Button.png" id="homeBtnStatic" onclick="window.location.href='index.html'">
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const targetDate = new Date("June 27, 2026 12:00:00 GMT-0400").getTime();
     function updateCountdown() {
       const now = new Date().getTime();
@@ -85,11 +90,4 @@
     }
     setInterval(updateCountdown, 1000);
     updateCountdown();
-    document.getElementById("hamburgerWrap").addEventListener("click", function() {
-      this.classList.toggle("active");
-      document.getElementById("hamburger").classList.toggle("active");
-      document.getElementById("menu").classList.toggle("active");
-    });
-  </script>
-</body>
-</html>
+    document.getElementById("hamburgerWrap").a
